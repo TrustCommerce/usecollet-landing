@@ -24,15 +24,11 @@ const HTML = `<header class="nav" id="nav">
   <section class="section hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow r">For property managers &amp; agencies · Lagos first</span>
+        <span class="eyebrow r">For property managers &amp; agencies · Abuja first</span>
         <h1 class="r">Sixty units. Fourteen owners. One month-end you <em>dread.</em></h1>
-        <p class="lead r">Collet collects every tenant’s rent, splits each owner’s share to the naira, and remits it automatically. You and the owner both see exactly where every payment went.</p>
-        <form class="signup r" id="heroForm" novalidate>
-          <label for="heroEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Work email</label>
-          <input type="email" id="heroEmail" name="email" placeholder="you@agency.com" required autocomplete="email" />
-          <button class="btn btn-brass" type="submit">Get early access</button>
-        </form>
-        <p class="reassure r">Free for founding agencies through the Lagos pilot · Bring your whole book</p>
+        <p class="lead r">Collet collects the rent, works out each owner’s share, and pays it out for you. You see where every payment went. So does the owner.</p>
+        <a class="btn btn-brass btn-hero r" href="#waitlist">Get early access</a>
+        <p class="reassure r">Free for founding agencies through the Abuja pilot · Bring your whole book</p>
       </div>
 
       <div class="hero-art r">
@@ -63,45 +59,45 @@ const HTML = `<header class="nav" id="nav">
   <section class="section dark pain" id="pain">
     <div class="wrap">
       <span class="eyebrow r">Month-end, every month</span>
-      <h2 class="r">Collecting the rent was never the hard part. Accounting for it is.</h2>
+      <h2 class="r">Collecting the rent should be the easy part. In Nigeria, it’s a fight. And the accounting is worse.</h2>
       <div class="pain-grid r">
         <div class="pain-cell">
+          <span class="tag">The chase</span>
+          <h3>Who has actually paid?</h3>
+          <p>Some pay late. Some pay half, then “next week.” Some go quiet till you show up at the gate. The chasing never stops.</p>
+        </div>
+        <div class="pain-cell">
           <span class="tag">The reconciliation</span>
-          <h3>Which of sixty tenants actually paid?</h3>
-          <p>You’re matching transfers to units by hand, and by month-end the gaps are buried in the volume.</p>
+          <h3>Then you match it all by hand.</h3>
+          <p>Cash here, a transfer with no name on it there. You match every payment to a unit yourself, and the gaps hide in the pile.</p>
         </div>
         <div class="pain-cell">
           <span class="tag">The statements</span>
           <h3>Fourteen owners. Fourteen statements.</h3>
-          <p>Rent in, your fee out, repairs out, net owed, worked out one owner at a time, line by line.</p>
+          <p>Rent in, your fee out, repairs out, what’s left owed. One owner at a time, line by line.</p>
         </div>
         <div class="pain-cell">
-          <span class="tag">The remittance</span>
+          <span class="tag">The payouts</span>
           <h3>Then you move money fourteen times.</h3>
-          <p>To fourteen separate accounts, and you hope the maths held on every single one.</p>
-        </div>
-        <div class="pain-cell">
-          <span class="tag">The calls</span>
-          <h3>“Has my tenant paid? Where’s my money?”</h3>
-          <p>The questions never stop, and you’ve no clean record to hand back as an answer.</p>
+          <p>Fourteen accounts, and you pray the maths held on every one.</p>
         </div>
       </div>
 
       <div class="callout r">
         <span class="big">67%</span>
-        <p>of property managers say bookkeeping and accounting is their single biggest challenge.
+        <p>of property managers say bookkeeping and accounting is their biggest headache.
           <span class="src">Survey, National Association of Residential Property Managers (NARPM)</span>
         </p>
       </div>
-      <p class="pain-foot r">The work that grows your business is winning owners. The work that eats your week is the spreadsheet. Quietly, 10 to 15 hours of it.</p>
+      <p class="pain-foot r">Winning owners is what grows your business. The chasing and the spreadsheet behind it are what eat your week. Quietly, 10 to 15 hours of it.</p>
     </div>
   </section>
 
   <section class="section mkt" id="market">
     <div class="wrap">
       <span class="eyebrow r">The market is moving</span>
-      <h2 class="r">A booming market, capped by a spreadsheet.</h2>
-      <p class="lead r">Nigerian real estate just became the country’s third-largest sector. The owners are multiplying. The only thing between you and five times the doors is how you keep the books.</p>
+      <h2 class="r">A booming market, held back by a spreadsheet.</h2>
+      <p class="lead r">Nigerian real estate is now the country’s third-largest sector, and Abuja is where the new doors are going up. There are more owners every month. The one thing between you and five times the doors is how you keep the books.</p>
 
       <div class="stats r">
         <div class="stat">
@@ -126,19 +122,19 @@ const HTML = `<header class="nav" id="nav">
         </div>
       </div>
 
-      <p class="mkt-kick r">But what works at 20 units breaks at 100 when it’s done by hand. <b>Collet is how you grow past the ceiling.</b></p>
+      <p class="mkt-kick r">What works at 20 units breaks at 100 by hand. <b>Collet is how you grow past that ceiling.</b></p>
     </div>
   </section>
 
   <section class="section dark" id="how">
     <div class="wrap">
       <span class="eyebrow r">How Collet works</span>
-      <h2 class="r">Your whole book, run from one place.</h2>
+      <h2 class="r">Run your whole book from one place.</h2>
       <div class="steps-grid">
-        <div class="step r"><span class="num">01</span><h3>Bring your owners on</h3><p>Add each owner and their units. They sign a mandate; you set your fee. Your agents come too, under your control.</p></div>
-        <div class="step r"><span class="num">02</span><h3>Rent reconciles itself</h3><p>Card, transfer, or a payment you record. Every naira matches itself to the right unit and owner. No more matching by hand.</p></div>
-        <div class="step r"><span class="num">03</span><h3>Autosweep does the split</h3><p>Your fee out, repairs out, each owner’s net to the kobo, remitted automatically, with a statement generated for every owner.</p></div>
-        <div class="step r"><span class="num">04</span><h3>See everything</h3><p>Every owner, every unit, every payout, and your own commission across the whole book, live.</p></div>
+        <div class="step r"><span class="num">01</span><h3>Bring your owners on</h3><p>Add each owner and their units. They sign a mandate. You set your fee. Add your agents too, and you control what they can do.</p></div>
+        <div class="step r"><span class="num">02</span><h3>Rent matches itself</h3><p>Card, transfer, or cash you log. Every payment lands on the right unit and owner on its own. No more matching by hand.</p></div>
+        <div class="step r"><span class="num">03</span><h3>Autosweep does the split</h3><p>It takes your fee, takes out repairs, and pays each owner what’s left. Automatically, with a statement for every owner.</p></div>
+        <div class="step r"><span class="num">04</span><h3>See everything</h3><p>Every owner, every unit, every payout, and your own commission. Across the whole book, live.</p></div>
       </div>
     </div>
   </section>
@@ -146,7 +142,7 @@ const HTML = `<header class="nav" id="nav">
   <section class="section feat" id="features">
     <div class="wrap">
       <span class="eyebrow r">What you get</span>
-      <h2 class="r">The back office you’ve been doing by hand.</h2>
+      <h2 class="r">The back office you’ve been running by hand.</h2>
       <div class="feat-grid">
         <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>One cockpit, every owner</h3><p>All your owners’ portfolios in a single view. Switch between them in a tap.</p></div></div>
         <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Rent in one queue</h3><p>Collect across every unit by card, transfer, USSD, or recorded by you, auto-matched to the right lease.</p></div></div>
@@ -164,8 +160,8 @@ const HTML = `<header class="nav" id="nav">
   <section class="section win" id="trust">
     <div class="wrap win-in">
       <span class="eyebrow r">How you win owners</span>
-      <h2 class="r">Every statement proves you’re honest. Honest is how you grow your book.</h2>
-      <p class="r">In a market where owners assume the worst of agents, the manager who can show every naira, to the kobo, on demand, is the one who keeps the account and earns the referral. Collet makes that proof automatic.</p>
+      <h2 class="r">Every statement proves you’re straight. That’s how you grow your book.</h2>
+      <p class="r">Most owners expect an agent to short them. So the manager who can show them exactly where their money went, the moment they ask, is the one who keeps the account and gets the referral. Collet gives you that proof without lifting a finger.</p>
     </div>
   </section>
 
@@ -174,8 +170,8 @@ const HTML = `<header class="nav" id="nav">
       <div class="cta-card r">
         <div>
           <span class="eyebrow">Founding agencies</span>
-          <h2>Bring your whole book. Be first in the Lagos pilot.</h2>
-          <p class="lead">Early access for managers and agencies. Founding agencies get white-glove onboarding (we’ll help you load your owners and units) and locked founding terms.</p>
+          <h2>Bring your whole book. Be first in the Abuja pilot.</h2>
+          <p class="lead">Early access for managers and agencies. Founding agencies get hands-on setup, where we load your owners and units for you, plus founding terms that stay locked.</p>
           <p class="ll-bridge">Just a landlord, not a manager? <a href="/landlords">See Collet from the owner’s side&nbsp;→</a></p>
         </div>
 
@@ -201,7 +197,7 @@ const HTML = `<header class="nav" id="nav">
             </div>
             <div class="field">
               <label for="wLoc">Where do you operate?</label>
-              <input type="text" id="wLoc" name="location" placeholder="e.g. Lekki &amp; Ikoyi, Lagos" autocomplete="off" />
+              <input type="text" id="wLoc" name="location" placeholder="e.g. Maitama &amp; Wuse, Abuja" autocomplete="off" />
             </div>
             <div class="field">
               <label for="wTool">What do you use today?</label>
@@ -213,7 +209,7 @@ const HTML = `<header class="nav" id="nav">
           <div class="form-done" id="waitDone">
             <span class="mk" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="33" stroke="var(--brass)" stroke-width="8" stroke-dasharray="55.1 14" stroke-linecap="round" transform="rotate(-90 50 50)"/><polygon points="50,38 60.39,44 60.39,56 50,62 39.61,56 39.61,44" fill="var(--brass)"/></svg></span>
             <h3>You’re on the list.</h3>
-            <p>We’ll reach out before the Lagos pilot opens, and help you bring your book across.</p>
+            <p>We’ll reach out before the Abuja pilot opens, and help you bring your book across.</p>
           </div>
         </div>
       </div>
@@ -234,7 +230,7 @@ const HTML = `<header class="nav" id="nav">
       <p class="foot-mission">Bringing proof to Nigerian rent.</p>
     </div>
     <div class="foot-bottom">
-      <span>Lagos, Nigeria · © 2026 Collet</span>
+      <span>Abuja, Nigeria · © 2026 Collet</span>
       <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Contact</a></span>
     </div>
   </div>

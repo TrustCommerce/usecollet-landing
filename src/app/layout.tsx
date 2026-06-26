@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   other: {
     "geo.region": "NG",
-    "geo.placename": "Lagos, Nigeria",
+    "geo.placename": "Abuja, Nigeria",
     "theme-color": "#1C3A2E",
   },
 };

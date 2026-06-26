@@ -142,3 +142,5 @@
 @media (prefers-reduced-motion:reduce){
   .mgr.js .r{opacity:1;transform:none}
 }
+
+.mgr .btn-hero{margin-top:.5rem}

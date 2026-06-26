@@ -24,15 +24,10 @@ const HTML = `<header class="nav" id="nav">
   <section class="section hero" id="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow r">For landlords · Lagos first</span>
+        <span class="eyebrow r">For landlords · Abuja first</span>
         <h1 class="r">You own the house. Why does it feel like your agent owns your <em>money?</em></h1>
-        <p class="lead r">Collet is where your property manager collects the rent, sends you your share to the naira, and gives you a record you can open from anywhere in the world.</p>
-        <form class="signup r" id="heroForm" novalidate>
-          <label for="heroEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
-          <input type="email" id="heroEmail" name="email" placeholder="you@email.com" required autocomplete="email" />
-          <button class="btn btn-brass" type="submit">Join the waitlist</button>
-        </form>
-        <p class="reassure r">Free for founding landlords through the Lagos pilot · No agent games</p>
+        <p class="lead r">Collet is where your property manager collects the rent, sends you your share, and gives you a record you can open from anywhere in the world.</p>
+        <a class="btn btn-brass btn-hero r" href="#waitlist">Join the waitlist</a>
       </div>
 
       <div class="hero-art r">
@@ -80,7 +75,7 @@ const HTML = `<header class="nav" id="nav">
         </div>
         <div class="pain-cell">
           <span class="tag">The house you cannot see</span>
-          <h3>“I own a flat in Lagos.”</h3>
+          <h3>“I own a flat in Abuja.”</h3>
           <p>From abroad, you haven’t seen a naira, or a single number, in months.</p>
         </div>
       </div>
@@ -160,7 +155,7 @@ const HTML = `<header class="nav" id="nav">
     <div class="wrap dia-in">
       <div class="dia-copy">
         <span class="eyebrow r">For owners abroad</span>
-        <h2 class="r">Own in Lagos.<br>Live anywhere.</h2>
+        <h2 class="r">Own in Abuja.<br>Live anywhere.</h2>
         <p class="r">Trade sporadic WhatsApp updates and unexplained transfers for a live view of your property, and reliable payouts that reach you wherever you are.</p>
       </div>
       <div class="dia-art r" aria-hidden="true">
@@ -207,7 +202,7 @@ const HTML = `<header class="nav" id="nav">
       <div class="cta-card r">
         <div class="cta-intro">
           <span class="eyebrow">Founding landlords</span>
-          <h2>Be first when the Lagos pilot opens.</h2>
+          <h2>Be first when the Abuja pilot opens.</h2>
           <p class="lead">Join the waitlist. Founding landlords get priority onboarding with a verified manager, and a front-row seat as we build.</p>
           <p class="pm-bridge">Manage properties for landlords? Collet is built for you. <a href="/" id="pmLink">Get early access&nbsp;→</a></p>
         </div>
@@ -220,7 +215,7 @@ const HTML = `<header class="nav" id="nav">
             </div>
             <div class="field">
               <label for="wLocation">Where is your property?</label>
-              <input type="text" id="wLocation" name="location" placeholder="e.g. Lekki, Lagos" autocomplete="off" />
+              <input type="text" id="wLocation" name="location" placeholder="e.g. Maitama, Abuja" autocomplete="off" />
             </div>
             <div class="field">
               <label for="wUnits">How many units do you own?</label>
@@ -241,7 +236,7 @@ const HTML = `<header class="nav" id="nav">
           <div class="form-done" id="waitDone">
             <span class="mk" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="33" stroke="var(--brass)" stroke-width="8" stroke-dasharray="55.1 14" stroke-linecap="round" transform="rotate(-90 50 50)"/><polygon points="50,38 60.39,44 60.39,56 50,62 39.61,56 39.61,44" fill="var(--brass)"/></svg></span>
             <h3>You’re on the list.</h3>
-            <p>We’ll reach out before the Lagos pilot opens.</p>
+            <p>We’ll reach out before the Abuja pilot opens.</p>
           </div>
         </div>
       </div>
@@ -262,7 +257,7 @@ const HTML = `<header class="nav" id="nav">
       <p class="foot-mission">Bringing proof to Nigerian rent.</p>
     </div>
     <div class="foot-bottom">
-      <span>Lagos, Nigeria · © 2026 Collet</span>
+      <span>Abuja, Nigeria · © 2026 Collet</span>
       <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Contact</a></span>
     </div>
   </div>
