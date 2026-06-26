@@ -1,0 +1,25 @@
+/* Global resets, root tokens, and keyframes — identical across both pages. */
+:root{
+    --ink:#16201B; --pine:#1C3A2E; --pine-deep:#142C22;
+    --bone:#F7F5EF; --bone-2:#EFEDE3;
+    --brass:#AC823F; --brass-bright:#C49B58;
+    --stone:#5C645A; --line:#E3DFD2; --line-dark:rgba(247,245,239,.14);
+    --neg:#9a6b4e;
+    --ff-display:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+    --ff-body:"Inter",system-ui,-apple-system,sans-serif;
+    --ff-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bone);color:var(--ink);font-family:var(--ff-body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--brass);color:var(--bone)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:3px}
+
+/* Keyframes */
+@keyframes lockIn{from{transform:rotate(-26deg);opacity:0}to{transform:rotate(0);opacity:1}}
+@keyframes fadeScale{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* Global responsive + reduced-motion rules */
+@media (max-width:620px){body{font-size:16px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

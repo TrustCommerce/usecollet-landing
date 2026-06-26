@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Collet · for property managers</title>
+<meta name="description" content="Collet collects every tenant's rent, splits each owner's share to the naira, remits it automatically, and proves where every payment went. The back office Nigerian property managers have been doing by hand." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#16201B; --pine:#1C3A2E; --pine-deep:#142C22;
+    --bone:#F7F5EF; --bone-2:#EFEDE3;
+    --brass:#AC823F; --brass-bright:#C49B58;
+    --stone:#5C645A; --line:#E3DFD2; --line-dark:rgba(247,245,239,.14);
+    --neg:#9a6b4e;
+    --ff-display:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+    --ff-body:"Inter",system-ui,-apple-system,sans-serif;
+    --ff-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--bone);color:var(--ink);font-family:var(--ff-body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--brass);color:var(--bone)}
+
+  .wrap{width:min(1180px,90vw);margin-inline:auto}
+  .section{padding:clamp(4rem,9vw,8rem) 0;position:relative}
+
+  .eyebrow{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);display:inline-flex;align-items:center;gap:.7em;margin-bottom:1.5rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.7}
+  h1,h2,h3{font-family:var(--ff-display);font-weight:500;letter-spacing:-.018em;line-height:1.06}
+  h2{font-size:clamp(1.9rem,3.6vw,2.95rem);max-width:20ch}
+  h3{font-size:1.16rem;letter-spacing:-.01em;line-height:1.25}
+  .lead{font-size:clamp(1.08rem,1.7vw,1.32rem);line-height:1.55;color:var(--stone);max-width:48ch}
+  .muted{color:var(--stone)}
+
+  .btn{font-family:var(--ff-display);font-weight:500;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.92em 1.5em;border-radius:7px;border:1px solid transparent;cursor:pointer;transition:transform .18s ease,background .18s ease,border-color .18s ease;white-space:nowrap}
+  .btn-brass{background:var(--brass);color:#1c160a}
+  .btn-brass:hover{background:var(--brass-bright);transform:translateY(-1px)}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:3px}
+
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(6px);transition:background .3s ease,border-color .3s ease;border-bottom:1px solid transparent}
+  .nav.scrolled{background:rgba(247,245,239,.86);border-color:var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:1.05rem 0}
+  .brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--ff-display);font-weight:600;font-size:1.22rem;letter-spacing:-.02em}
+  .nav .btn{padding:.7em 1.2em;font-size:.92rem}
+
+  .hero{padding-top:clamp(2.6rem,6vw,5rem);padding-bottom:clamp(3.6rem,8vw,6.5rem)}
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5vw,4.05rem);font-weight:500;max-width:16ch;margin-bottom:1.4rem}
+  .hero h1 em{font-style:normal;color:var(--brass)}
+  .hero .lead{margin-bottom:2rem;max-width:46ch}
+  .signup{display:flex;gap:.6rem;max-width:460px;flex-wrap:wrap}
+  .signup input[type=email]{flex:1 1 220px;min-width:0;font-family:var(--ff-body);font-size:1rem;color:var(--ink);padding:.85em 1.05em;border-radius:7px;border:1px solid var(--line);background:#fff;transition:border-color .18s ease}
+  .signup input[type=email]:focus{outline:none;border-color:var(--brass)}
+  .reassure{font-family:var(--ff-mono);font-size:.74rem;letter-spacing:.04em;color:var(--stone);margin-top:1rem}
+
+  .hero-art{display:flex;justify-content:center;align-items:center;position:relative}
+  .hero-art .glow{position:absolute;inset:0;margin:auto;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle,rgba(172,130,63,.13),transparent 70%);filter:blur(10px)}
+  .stmt{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.55rem 1.7rem 1.4rem;box-shadow:0 26px 60px -30px rgba(20,40,30,.34);width:min(400px,88vw)}
+  .stmt-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;border-bottom:1px solid var(--line);padding-bottom:1.05rem;margin-bottom:.5rem}
+  .stmt-head .who{font-family:var(--ff-display);font-weight:500;font-size:1.02rem}
+  .stmt-head .per{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.05em;color:var(--stone);margin-top:.3rem;display:block}
+  .stmt-head .seal svg{display:block}
+  .stmt-row{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--ff-mono);font-size:.9rem;padding:.5rem 0}
+  .stmt-row .lbl{color:var(--stone)}
+  .stmt-row .val{color:var(--ink);font-variant-numeric:tabular-nums}
+  .stmt-row.neg .val{color:var(--neg)}
+  .stmt-net{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:.55rem;padding-top:.95rem}
+  .stmt-net .lbl{font-family:var(--ff-display);font-weight:500;font-size:1rem}
+  .stmt-net .val{font-family:var(--ff-mono);font-weight:500;font-size:1.3rem;color:var(--brass);font-variant-numeric:tabular-nums}
+  .stmt-tag{display:inline-flex;align-items:center;gap:.5em;margin-top:1.05rem;font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.07em;color:var(--stone)}
+  .stmt-tag .dot{width:6px;height:6px;border-radius:50%;background:#3f7d54;box-shadow:0 0 0 3px rgba(63,125,84,.16)}
+
+  .dark{background:var(--pine);color:var(--bone)}
+  .dark h2{color:var(--bone)} .dark .lead,.dark .muted{color:rgba(247,245,239,.74)}
+  .dark .eyebrow{color:var(--brass-bright)} .dark .eyebrow::before{background:var(--brass-bright)}
+
+  .pain h2{margin-bottom:3rem;max-width:22ch}
+  .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:12px;overflow:hidden}
+  .pain-cell{background:var(--pine);padding:clamp(1.5rem,3vw,2.3rem)}
+  .pain-cell .tag{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-bright);display:block;margin-bottom:.9rem}
+  .pain-cell h3{color:var(--bone);margin-bottom:.55rem;font-weight:500;font-size:1.08rem}
+  .pain-cell p{color:rgba(247,245,239,.7);font-size:1.01rem;line-height:1.5}
+  .callout{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.4rem,3vw,2.6rem);align-items:center;margin-top:2.6rem;padding-top:2.6rem;border-top:1px solid var(--line-dark)}
+  .callout .big{font-family:var(--ff-display);font-weight:500;font-size:clamp(3.4rem,9vw,5.6rem);line-height:.9;color:var(--brass-bright);letter-spacing:-.03em}
+  .callout p{color:var(--bone);font-size:clamp(1.1rem,2.1vw,1.45rem);font-family:var(--ff-display);font-weight:400;letter-spacing:-.01em;max-width:24ch}
+  .callout .src{display:block;margin-top:.7rem;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.05em;color:rgba(247,245,239,.42);text-transform:none}
+  .pain-foot{margin-top:2.4rem;font-family:var(--ff-display);font-size:clamp(1.1rem,2.1vw,1.5rem);font-weight:400;color:rgba(247,245,239,.82);max-width:34ch}
+
+  .mkt h2{margin-bottom:1.1rem} .mkt .lead{margin-bottom:3.2rem;max-width:42ch}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .stat{background:var(--bone);padding:clamp(1.4rem,3vw,2.1rem)}
+  .stat .fig{font-family:var(--ff-display);font-weight:500;font-size:clamp(2.1rem,4.5vw,3.1rem);letter-spacing:-.025em;color:var(--ink);line-height:1}
+  .stat .cap{margin-top:.7rem;font-size:.95rem;color:var(--stone);line-height:1.4;max-width:24ch}
+  .stat .src{margin-top:.9rem;font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.05em;color:var(--brass);text-transform:uppercase}
+  .mkt-kick{margin-top:2.6rem;font-family:var(--ff-display);font-size:clamp(1.15rem,2.2vw,1.55rem);font-weight:400;letter-spacing:-.01em;color:var(--ink);max-width:34ch}
+  .mkt-kick b{color:var(--brass);font-weight:500}
+
+  .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.3rem,2.6vw,2.2rem);margin-top:3rem}
+  .step .num{font-family:var(--ff-mono);font-size:.8rem;letter-spacing:.1em;color:var(--brass);display:block;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line-dark)}
+  .step h3{margin-bottom:.55rem;font-weight:500;font-size:1.06rem;color:var(--bone)}
+  .step p{color:rgba(247,245,239,.7);font-size:.97rem}
+
+  .feat h2{margin-bottom:3rem}
+  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:clamp(2rem,5vw,5rem)}
+  .feat-item{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:1.4rem 0;border-top:1px solid var(--line);align-items:start}
+  .feat-item .mk{margin-top:.2rem;flex:0 0 auto}
+  .feat-item h3{font-size:1.05rem;font-weight:500;margin-bottom:.3rem}
+  .feat-item p{color:var(--stone);font-size:.98rem;line-height:1.5}
+
+  .win{background:var(--pine-deep);color:var(--bone)}
+  .win-in{max-width:42ch}
+  .win h2{color:var(--bone);margin-bottom:1.3rem}
+  .win p{color:rgba(247,245,239,.78);font-size:clamp(1.05rem,1.7vw,1.25rem)}
+
+  .cta{background:var(--pine)}
+  .cta-card{background:linear-gradient(180deg,#1f4032,#1a3528);border:1px solid var(--line-dark);border-radius:16px;padding:clamp(1.8rem,5vw,3.6rem);display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+  .cta-card h2{color:var(--bone);max-width:15ch}
+  .cta-card .lead{color:rgba(247,245,239,.74);margin-top:1.1rem;max-width:38ch}
+  .ll-bridge{margin-top:2rem;font-size:.95rem;color:rgba(247,245,239,.66)}
+  .ll-bridge a{color:var(--brass-bright);border-bottom:1px solid rgba(196,155,88,.4);padding-bottom:1px}
+  .ll-bridge a:hover{border-color:var(--brass-bright)}
+  form .row2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  form .field{margin-bottom:1rem}
+  form label{display:block;font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,245,239,.6);margin-bottom:.5rem}
+  form input,form select{width:100%;font-family:var(--ff-body);font-size:1rem;color:var(--bone);padding:.78em 1em;border-radius:7px;border:1px solid var(--line-dark);background:rgba(247,245,239,.04);transition:border-color .18s ease}
+  form input::placeholder{color:rgba(247,245,239,.4)}
+  form input:focus,form select:focus{outline:none;border-color:var(--brass)}
+  form select{appearance:none;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2010%206'%3E%3Cpath%20fill='%23C49B58'%20d='M0%200l5%206%205-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1em center;background-size:10px;padding-right:2.4em}
+  form select option{color:#16201B}
+  form .btn{width:100%;margin-top:.6rem;padding:1em}
+  .form-note{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.03em;color:rgba(247,245,239,.45);margin-top:.9rem;text-align:center}
+  .form-done{display:none;text-align:center;padding:2rem 0}.form-done.show{display:block}
+  .form-done .mk{margin-bottom:1.2rem}
+  .form-done h3{color:var(--bone);font-weight:500;margin-bottom:.6rem}
+  .form-done p{color:rgba(247,245,239,.72)}
+  .is-sent form{display:none}
+
+  footer{background:var(--ink);color:rgba(247,245,239,.7);padding:clamp(3rem,6vw,4.5rem) 0 2.5rem}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;padding-bottom:2.5rem;border-bottom:1px solid rgba(247,245,239,.1)}
+  .foot-brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--ff-display);font-weight:600;font-size:1.22rem;color:var(--bone);margin-bottom:1rem}
+  .foot-def{font-family:var(--ff-mono);font-size:.76rem;letter-spacing:.02em;color:rgba(247,245,239,.5);max-width:42ch;line-height:1.7}
+  .foot-mission{font-family:var(--ff-display);font-size:1.05rem;color:var(--bone);font-weight:400;max-width:18ch;text-align:right}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:1.6rem;font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.04em;color:rgba(247,245,239,.45)}
+  .foot-bottom a:hover{color:var(--bone)}
+
+  .r{opacity:1;transform:none}
+  .js .r{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js .r.in{opacity:1;transform:none}
+  @keyframes lockIn{from{transform:rotate(-26deg);opacity:0}to{transform:rotate(0);opacity:1}}
+  .js .seal svg .ring{transform-origin:50% 50%;animation:lockIn 1s cubic-bezier(.2,.8,.2,1) both}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:2.4rem}
+    .steps-grid{grid-template-columns:repeat(2,1fr)}
+    .cta-card{grid-template-columns:1fr;gap:2.2rem}
+    .foot-mission{text-align:left}
+  }
+  @media (max-width:620px){
+    body{font-size:16px}
+    .section{padding:3.4rem 0}
+    .pain-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:1fr}
+    .steps-grid{grid-template-columns:1fr;gap:1.6rem}
+    .callout{grid-template-columns:1fr;gap:.6rem;text-align:left}
+    .signup{flex-direction:column;max-width:100%;gap:.7rem}
+    .signup input[type=email]{flex:none;width:100%;font-size:16px;padding:.8em 1rem}
+    .signup .btn{width:100%}
+    form .row2{grid-template-columns:1fr}
+    .foot-top{flex-direction:column}
+  }
+  @media (max-width:430px){
+    .hero h1{font-size:2.05rem}
+    h2{font-size:1.72rem}
+    .section{padding:3rem 0}
+    .stmt{padding:1.3rem 1.35rem 1.2rem}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .r{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Collet home">
+      <svg width="28" height="28" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <circle cx="50" cy="50" r="30" stroke="var(--ink)" stroke-width="8" stroke-dasharray="49.8 13" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+        <polygon points="50,40 58.66,45 58.66,55 50,60 41.34,55 41.34,45" fill="var(--brass)"/>
+      </svg>
+      Collet
+    </a>
+    <a class="btn btn-brass" href="#waitlist">Get early access</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="section hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow r">For property managers &amp; agencies · Lagos first</span>
+        <h1 class="r">Sixty units. Fourteen owners. One month-end you <em>dread.</em></h1>
+        <p class="lead r">Collet collects every tenant’s rent, splits each owner’s share to the naira, and remits it automatically. You and the owner both see exactly where every payment went.</p>
+        <form class="signup r" id="heroForm" novalidate>
+          <label for="heroEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Work email</label>
+          <input type="email" id="heroEmail" name="email" placeholder="you@agency.com" required autocomplete="email" />
+          <button class="btn btn-brass" type="submit">Get early access</button>
+        </form>
+        <p class="reassure r">Free for founding agencies through the Lagos pilot · Bring your whole book</p>
+      </div>
+
+      <div class="hero-art r">
+        <span class="glow" aria-hidden="true"></span>
+        <div class="stmt" role="img" aria-label="An owner statement generated by Collet: rent collected ₦4,500,000, management fee ₦450,000, approved repairs ₦85,000, net remitted ₦3,965,000.">
+          <div class="stmt-head">
+            <div>
+              <span class="who">Owner statement</span>
+              <span class="per">MRS. F. ADEYEMI · 3 UNITS · JUN 2026</span>
+            </div>
+            <span class="seal" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+                <circle class="ring" cx="50" cy="50" r="33" stroke="var(--brass)" stroke-width="9" stroke-dasharray="55.1 14" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                <polygon points="50,38 60.39,44 60.39,56 50,62 39.61,56 39.61,44" fill="var(--brass)"/>
+              </svg>
+            </span>
+          </div>
+          <div class="stmt-row"><span class="lbl">Rent collected</span><span class="val">₦4,500,000</span></div>
+          <div class="stmt-row neg"><span class="lbl">Management fee · 10%</span><span class="val">−₦450,000</span></div>
+          <div class="stmt-row neg"><span class="lbl">Repairs · approved</span><span class="val">−₦85,000</span></div>
+          <div class="stmt-net"><span class="lbl">Net remitted</span><span class="val">₦3,965,000</span></div>
+          <span class="stmt-tag"><span class="dot"></span>PAID · 24 JUN · VIA AUTOSWEEP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark pain" id="pain">
+    <div class="wrap">
+      <span class="eyebrow r">Month-end, every month</span>
+      <h2 class="r">Collecting the rent was never the hard part. Accounting for it is.</h2>
+      <div class="pain-grid r">
+        <div class="pain-cell">
+          <span class="tag">The reconciliation</span>
+          <h3>Which of sixty tenants actually paid?</h3>
+          <p>You’re matching transfers to units by hand, and by month-end the gaps are buried in the volume.</p>
+        </div>
+        <div class="pain-cell">
+          <span class="tag">The statements</span>
+          <h3>Fourteen owners. Fourteen statements.</h3>
+          <p>Rent in, your fee out, repairs out, net owed, worked out one owner at a time, line by line.</p>
+        </div>
+        <div class="pain-cell">
+          <span class="tag">The remittance</span>
+          <h3>Then you move money fourteen times.</h3>
+          <p>To fourteen separate accounts, and you hope the maths held on every single one.</p>
+        </div>
+        <div class="pain-cell">
+          <span class="tag">The calls</span>
+          <h3>“Has my tenant paid? Where’s my money?”</h3>
+          <p>The questions never stop, and you’ve no clean record to hand back as an answer.</p>
+        </div>
+      </div>
+
+      <div class="callout r">
+        <span class="big">67%</span>
+        <p>of property managers say bookkeeping and accounting is their single biggest challenge.
+          <span class="src">Survey, National Association of Residential Property Managers (NARPM)</span>
+        </p>
+      </div>
+      <p class="pain-foot r">The work that grows your business is winning owners. The work that eats your week is the spreadsheet. Quietly, 10 to 15 hours of it.</p>
+    </div>
+  </section>
+
+  <section class="section mkt" id="market">
+    <div class="wrap">
+      <span class="eyebrow r">The market is moving</span>
+      <h2 class="r">A booming market, capped by a spreadsheet.</h2>
+      <p class="lead r">Nigerian real estate just became the country’s third-largest sector. The owners are multiplying. The only thing between you and five times the doors is how you keep the books.</p>
+
+      <div class="stats r">
+        <div class="stat">
+          <div class="fig">₦41tn</div>
+          <p class="cap">Nigeria’s real estate sector, now the 3rd largest in the economy.</p>
+          <span class="src">NBS · 2025 GDP rebasing</span>
+        </div>
+        <div class="stat">
+          <div class="fig">28M</div>
+          <p class="cap">Unit housing deficit driving relentless rental demand.</p>
+          <span class="src">Industry &amp; FG estimates</span>
+        </div>
+        <div class="stat">
+          <div class="fig">220M+</div>
+          <p class="cap">People, urbanising fast. Most city dwellers rent.</p>
+          <span class="src">National population, 2025</span>
+        </div>
+        <div class="stat">
+          <div class="fig">91%</div>
+          <p class="cap">Of property managers plan to grow their portfolio.</p>
+          <span class="src">2025 industry survey</span>
+        </div>
+      </div>
+
+      <p class="mkt-kick r">But what works at 20 units breaks at 100 when it’s done by hand. <b>Collet is how you grow past the ceiling.</b></p>
+    </div>
+  </section>
+
+  <section class="section dark" id="how">
+    <div class="wrap">
+      <span class="eyebrow r">How Collet works</span>
+      <h2 class="r">Your whole book, run from one place.</h2>
+      <div class="steps-grid">
+        <div class="step r"><span class="num">01</span><h3>Bring your owners on</h3><p>Add each owner and their units. They sign a mandate; you set your fee. Your agents come too, under your control.</p></div>
+        <div class="step r"><span class="num">02</span><h3>Rent reconciles itself</h3><p>Card, transfer, or a payment you record. Every naira matches itself to the right unit and owner. No more matching by hand.</p></div>
+        <div class="step r"><span class="num">03</span><h3>Autosweep does the split</h3><p>Your fee out, repairs out, each owner’s net to the kobo, remitted automatically, with a statement generated for every owner.</p></div>
+        <div class="step r"><span class="num">04</span><h3>See everything</h3><p>Every owner, every unit, every payout, and your own commission across the whole book, live.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feat" id="features">
+    <div class="wrap">
+      <span class="eyebrow r">What you get</span>
+      <h2 class="r">The back office you’ve been doing by hand.</h2>
+      <div class="feat-grid">
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>One cockpit, every owner</h3><p>All your owners’ portfolios in a single view. Switch between them in a tap.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Rent in one queue</h3><p>Collect across every unit by card, transfer, USSD, or recorded by you, auto-matched to the right lease.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Reconciliation, automatic</h3><p>Payments match themselves to units and owners. Month-end stops being a manual hunt.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Autosweep</h3><p>The moment rent lands, it splits to the landlord, you, and the agent automatically. Toggle it off and the full amount comes to you to disburse.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Statements, generated</h3><p>Branded owner statements produced for you. The thing you sweat over, done in a click.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Automatic reminders</h3><p>Collet nudges tenants before rent is due, by SMS, WhatsApp and email, so you stop chasing and rent comes in on time.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Your commission, tracked</h3><p>What you’ve earned across every owner and let, finally in one number.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Trust accounting, built in</h3><p>A double-entry ledger and a permanent audit trail. Every owner’s money accounted for to the kobo, and provable on demand.</p></div></div>
+        <div class="feat-item r"><span class="mk" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="var(--brass)" stroke-width="11" stroke-dasharray="58 16" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg></span><div><h3>Your agents, in bounds</h3><p>Bring agents under your agency. They work within the limits you set, and everything they touch is logged.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section win" id="trust">
+    <div class="wrap win-in">
+      <span class="eyebrow r">How you win owners</span>
+      <h2 class="r">Every statement proves you’re honest. Honest is how you grow your book.</h2>
+      <p class="r">In a market where owners assume the worst of agents, the manager who can show every naira, to the kobo, on demand, is the one who keeps the account and earns the referral. Collet makes that proof automatic.</p>
+    </div>
+  </section>
+
+  <section class="section cta" id="waitlist">
+    <div class="wrap">
+      <div class="cta-card r">
+        <div>
+          <span class="eyebrow">Founding agencies</span>
+          <h2>Bring your whole book. Be first in the Lagos pilot.</h2>
+          <p class="lead">Early access for managers and agencies. Founding agencies get white-glove onboarding (we’ll help you load your owners and units) and locked founding terms.</p>
+          <p class="ll-bridge">Just a landlord, not a manager? <a href="index.html">See Collet from the owner’s side&nbsp;→</a></p>
+        </div>
+
+        <div id="waitWrap">
+          <form id="waitForm" novalidate>
+            <div class="field">
+              <label for="wAgency">Agency name</label>
+              <input type="text" id="wAgency" name="agency" placeholder="Your agency" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="wEmail">Work email</label>
+              <input type="email" id="wEmail" name="email" placeholder="you@agency.com" required autocomplete="email" />
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="wUnits">Units you manage</label>
+                <select id="wUnits" name="units"><option value="">Select…</option><option>Under 20</option><option>20 to 50</option><option>50 to 150</option><option>150+</option></select>
+              </div>
+              <div class="field">
+                <label for="wOwners">Owners you manage</label>
+                <select id="wOwners" name="owners"><option value="">Select…</option><option>1 to 5</option><option>6 to 15</option><option>16 to 40</option><option>40+</option></select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="wLoc">Where do you operate?</label>
+              <input type="text" id="wLoc" name="location" placeholder="e.g. Lekki &amp; Ikoyi, Lagos" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="wTool">What do you use today?</label>
+              <select id="wTool" name="current_tool"><option value="">Select…</option><option>Spreadsheets &amp; WhatsApp</option><option>Other property software</option><option>Nothing structured yet</option></select>
+            </div>
+            <button class="btn btn-brass" type="submit">Get early access</button>
+            <p class="form-note">We’ll only use this to reach you about the pilot.</p>
+          </form>
+          <div class="form-done" id="waitDone">
+            <span class="mk" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="33" stroke="var(--brass)" stroke-width="8" stroke-dasharray="55.1 14" stroke-linecap="round" transform="rotate(-90 50 50)"/><polygon points="50,38 60.39,44 60.39,56 50,62 39.61,56 39.61,44" fill="var(--brass)"/></svg></span>
+            <h3>You’re on the list.</h3>
+            <p>We’ll reach out before the Lagos pilot opens, and help you bring your book across.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <span class="foot-brand">
+          <svg width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><circle cx="50" cy="50" r="30" stroke="var(--bone)" stroke-width="8" stroke-dasharray="49.8 13" stroke-linecap="round" transform="rotate(-90 50 50)"/><polygon points="50,40 58.66,45 58.66,55 50,60 41.34,55 41.34,45" fill="var(--brass)"/></svg>
+          Collet
+        </span>
+        <p class="foot-def">col·let &nbsp;·&nbsp; the precision grip that holds a part dead-centre, so it never slips. Every owner’s money, accounted for the same way.</p>
+      </div>
+      <p class="foot-mission">Bringing proof to Nigerian rent.</p>
+    </div>
+    <div class="foot-bottom">
+      <span>Lagos, Nigeria · © 2026 Collet</span>
+      <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>12);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  const reveals=document.querySelectorAll('.r');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(el=>io.observe(el));
+  } else { reveals.forEach(el=>el.classList.add('in')); }
+
+  function submitForm(data){
+    return Promise.resolve();
+  }
+  function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+
+  const heroForm=document.getElementById('heroForm');
+  heroForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const val=document.getElementById('heroEmail').value.trim();
+    const target=document.getElementById('wEmail');
+    if(isEmail(val)) target.value=val;
+    document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>target.focus({preventScroll:true}),600);
+  });
+
+  const waitForm=document.getElementById('waitForm');
+  const waitWrap=document.getElementById('waitWrap');
+  const waitDone=document.getElementById('waitDone');
+  waitForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const email=document.getElementById('wEmail');
+    if(!isEmail(email.value.trim())){email.focus();email.style.borderColor='#C49B58';return;}
+    const data={agency:document.getElementById('wAgency').value.trim(),email:email.value.trim(),units:document.getElementById('wUnits').value,owners:document.getElementById('wOwners').value,location:document.getElementById('wLoc').value.trim(),current_tool:document.getElementById('wTool').value};
+    submitForm(data).then(()=>{waitWrap.classList.add('is-sent');waitDone.classList.add('show');}).catch(()=>alert('Something went wrong. Please try again.'));
+  });
+</script>
+</body>
+</html>
