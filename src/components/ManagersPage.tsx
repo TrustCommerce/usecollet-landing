@@ -24,11 +24,10 @@ const HTML = `<header class="nav" id="nav">
   <section class="section hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow r">For property managers &amp; agencies · Abuja first</span>
+        <span class="eyebrow r">For property managers &amp; agencies · Nigeria first</span>
         <h1 class="r">Sixty units. Fourteen owners. One month-end you <em>dread.</em></h1>
         <p class="lead r">Collet collects the rent, works out each owner’s share, and pays it out for you. You see where every payment went. So does the owner.</p>
         <a class="btn btn-brass btn-hero r" href="#waitlist">Get early access</a>
-        <p class="reassure r">Free for founding agencies through the Abuja pilot · Bring your whole book</p>
       </div>
 
       <div class="hero-art r">
@@ -83,12 +82,6 @@ const HTML = `<header class="nav" id="nav">
         </div>
       </div>
 
-      <div class="callout r">
-        <span class="big">67%</span>
-        <p>of property managers say bookkeeping and accounting is their biggest headache.
-          <span class="src">Survey, National Association of Residential Property Managers (NARPM)</span>
-        </p>
-      </div>
       <p class="pain-foot r">Winning owners is what grows your business. The chasing and the spreadsheet behind it are what eat your week. Quietly, 10 to 15 hours of it.</p>
     </div>
   </section>
@@ -111,14 +104,14 @@ const HTML = `<header class="nav" id="nav">
           <span class="src">Industry &amp; FG estimates</span>
         </div>
         <div class="stat">
-          <div class="fig">220M+</div>
+          <div class="fig">230M+</div>
           <p class="cap">People, urbanising fast. Most city dwellers rent.</p>
           <span class="src">National population, 2025</span>
         </div>
         <div class="stat">
           <div class="fig">91%</div>
           <p class="cap">Of property managers plan to grow their portfolio.</p>
-          <span class="src">2025 industry survey</span>
+          <span class="src">Buildium · 2025 industry report</span>
         </div>
       </div>
 

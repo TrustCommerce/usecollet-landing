@@ -24,7 +24,7 @@ const HTML = `<header class="nav" id="nav">
   <section class="section hero" id="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow r">For landlords · Abuja first</span>
+        <span class="eyebrow r">For landlords · Nigeria first</span>
         <h1 class="r">You own the house. Why does it feel like your agent owns your <em>money?</em></h1>
         <p class="lead r">Collet is where your property manager collects the rent, sends you your share, and gives you a record you can open from anywhere in the world.</p>
         <a class="btn btn-brass btn-hero r" href="#waitlist">Join the waitlist</a>
