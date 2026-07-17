@@ -1,4 +1,4 @@
-import { WAITLIST_API } from "@/config";
+import { DEMO_VIDEO_EMBED, WAITLIST_API } from "@/config";
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
@@ -82,6 +82,12 @@ export function wireColletPage(
       if (!res.ok) throw new Error(String(res.status));
       waitWrap?.classList.add("is-sent");
       waitDone?.classList.add("show");
+      mountDemoVideo(root);
+      // Hiding the form drops keyboard focus to <body>; move it to the success
+      // card so the confirmation is announced and the video is one Tab away.
+      waitDone?.focus({ preventScroll: true });
+      const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      waitDone?.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "nearest" });
     } catch {
       submitting = false;
       window.alert("Something went wrong. Please try again.");
@@ -109,4 +115,21 @@ export function nonEmpty(entries: Record<string, string | undefined>): Record<st
 
 export function fieldValue(root: HTMLElement, selector: string): string {
   return root.querySelector<HTMLInputElement | HTMLSelectElement>(selector)?.value ?? "";
+}
+
+/**
+ * Drop the Vimeo demo player into the post-signup card. The iframe is created
+ * only here — after a successful submit — so visitors who never sign up never
+ * load the Vimeo player at all.
+ */
+function mountDemoVideo(root: HTMLElement): void {
+  const host = root.querySelector<HTMLElement>("#doneVideo");
+  if (!host || host.querySelector("iframe")) return;
+  const iframe = document.createElement("iframe");
+  iframe.src = DEMO_VIDEO_EMBED;
+  iframe.title = "Collet product demo";
+  iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media";
+  iframe.allowFullscreen = true;
+  iframe.referrerPolicy = "strict-origin-when-cross-origin";
+  host.appendChild(iframe);
 }

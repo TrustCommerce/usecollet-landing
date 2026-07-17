@@ -84,11 +84,15 @@
 .owner form select option{color:#16201B}
 .owner form .btn{width:100%;margin-top:.6rem;padding:1em}
 .owner .form-note{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.03em;color:rgba(247,245,239,.45);margin-top:.9rem;text-align:center}
-.owner .form-done{display:none;text-align:center;padding:2rem 0}
+.owner .form-done{display:none;text-align:center;padding:2rem 0;scroll-margin-top:5rem;outline:none}
 .owner .form-done.show{display:block}
 .owner .form-done .mk{margin-bottom:1.2rem}
 .owner .form-done h3{color:var(--bone);font-weight:500;margin-bottom:.6rem}
 .owner .form-done p{color:rgba(247,245,239,.72)}
+.owner .form-done .done-cue{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-bright);margin-top:1.9rem}
+.owner .done-video{position:relative;width:100%;aspect-ratio:16/9;margin-top:1rem;border-radius:12px;overflow:hidden;background:var(--pine-deep);border:1px solid var(--line-dark);box-shadow:0 22px 50px -28px rgba(0,0,0,.55)}
+.owner .done-video:empty{display:none}
+.owner .done-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .owner .is-sent form{display:none}
 .owner footer{background:var(--ink);color:rgba(247,245,239,.7);padding:clamp(3rem,6vw,4.5rem) 0 2.5rem}
 .owner .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;padding-bottom:2.5rem;border-bottom:1px solid rgba(247,245,239,.1)}

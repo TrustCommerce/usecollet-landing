@@ -233,10 +233,12 @@ const HTML = `<header class="nav" id="nav">
             <p class="form-note">We’ll only use this to reach you about the pilot.</p>
           </form>
 
-          <div class="form-done" id="waitDone">
+          <div class="form-done" id="waitDone" role="status" tabindex="-1">
             <span class="mk" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="33" stroke="var(--brass)" stroke-width="8" stroke-dasharray="55.1 14" stroke-linecap="round" transform="rotate(-90 50 50)"/><polygon points="50,38 60.39,44 60.39,56 50,62 39.61,56 39.61,44" fill="var(--brass)"/></svg></span>
             <h3>You’re on the list.</h3>
             <p>We’ll reach out before the Abuja pilot opens.</p>
+            <p class="done-cue">While you’re here · watch Collet in action</p>
+            <div class="done-video" id="doneVideo"></div>
           </div>
         </div>
       </div>
