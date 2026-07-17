@@ -204,7 +204,7 @@ const HTML = `<header class="nav" id="nav">
           <span class="eyebrow">Founding landlords</span>
           <h2>Be first when the Abuja pilot opens.</h2>
           <p class="lead">Join the waitlist. Founding landlords get priority onboarding with a verified manager, and a front-row seat as we build.</p>
-          <p class="pm-bridge">Manage properties for landlords? Collet is built for you. <a href="/" id="pmLink">Get early access&nbsp;→</a></p>
+          <p class="pm-bridge">Manage properties for landlords? Collet is built for you. <a href="/" id="pmLink">Book a demo&nbsp;→</a></p>
         </div>
 
         <div class="cta-form" id="waitWrap">

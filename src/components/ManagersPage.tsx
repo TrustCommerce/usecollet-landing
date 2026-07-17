@@ -15,7 +15,7 @@ const HTML = `<header class="nav" id="nav">
       </svg>
       Collet
     </a>
-    <a class="btn btn-brass" href="#waitlist">Get early access</a>
+    <a class="btn btn-brass" href="#waitlist">Book a demo</a>
   </div>
 </header>
 
@@ -27,7 +27,7 @@ const HTML = `<header class="nav" id="nav">
         <span class="eyebrow r">For property managers &amp; agencies · Nigeria first</span>
         <h1 class="r">Sixty units. Fourteen owners. One month-end you <em>dread.</em></h1>
         <p class="lead r">Collet collects the rent, works out each owner’s share, and pays it out for you. You see where every payment went. So does the owner.</p>
-        <a class="btn btn-brass btn-hero r" href="#waitlist">Get early access</a>
+        <a class="btn btn-brass btn-hero r" href="#waitlist">Book a demo</a>
       </div>
 
       <div class="hero-art r">
@@ -196,7 +196,7 @@ const HTML = `<header class="nav" id="nav">
               <label for="wTool">What do you use today?</label>
               <select id="wTool" name="current_tool"><option value="">Select…</option><option>Spreadsheets &amp; WhatsApp</option><option>Other property software</option><option>Nothing structured yet</option></select>
             </div>
-            <button class="btn btn-brass" type="submit">Get early access</button>
+            <button class="btn btn-brass" type="submit">Book a demo</button>
             <p class="form-note">We’ll only use this to reach you about the pilot.</p>
           </form>
           <div class="form-done" id="waitDone" role="status" tabindex="-1">
