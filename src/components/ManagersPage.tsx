@@ -24,9 +24,9 @@ const HTML = `<header class="nav" id="nav">
   <section class="section hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow r">For property managers &amp; agencies · Nigeria first</span>
-        <h1 class="r">Sixty units. Fourteen owners. One month-end you <em>dread.</em></h1>
-        <p class="lead r">Collet collects the rent, works out each owner’s share, and pays it out for you. You see where every payment went. So does the owner.</p>
+        <span class="eyebrow r">Property management software · Nigeria</span>
+        <h1 class="r">Rental payment <em>peace of mind</em></h1>
+        <p class="lead r">Nigeria’s leading property management software &amp; rental payment platform for property managers. Automate and safeguard rent collection, reconciliation and payments from end to end. Like clockwork.</p>
         <a class="btn btn-brass btn-hero r" href="#waitlist">Book a demo</a>
       </div>
 
